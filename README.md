@@ -42,7 +42,9 @@ Los archivos SVG se generan en la carpeta `output/`.
 - **Top Disciplina**: Valeria (9.25), Said (8.12)
 - **Top Sociabilidad**: Chafita (8.88), Nico (7.88)
 
-Ver análisis completo en [`docs/team_stats.md`](docs/team_stats.md)
+Ver análisis interactivo:
+- **GitHub Pages**: [Dashboard Interactivo](https://seir.github.io/team-skills-radar/docs/team_stats.html)
+- **Vista Previa**: [HTMLPreview](https://htmlpreview.github.io/?https://github.com/Seir/team-skills-radar/blob/main/docs/team_stats.html)
 
 ## 🎨 Personalización
 
