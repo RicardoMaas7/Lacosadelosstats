@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="700" height="700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#2c5aa0;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#1a365d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f1419;stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- PARCHE: usar coordenadas absolutas para evitar bbox degeneradas -->
+    <filter id="strongGlow" filterUnits="userSpaceOnUse"
+            x="-150" y="-150" width="1000" height="1000">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="softGlow" filterUnits="userSpaceOnUse"
+            x="-150" y="-150" width="1000" height="1000">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="redAreaBlur" filterUnits="userSpaceOnUse"
+            x="-150" y="-150" width="1000" height="1000">
+      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Filtro para sombra interior -->
+    <filter id="innerShadow" filterUnits="userSpaceOnUse"
+            x="-150" y="-150" width="1000" height="1000">
+      <feGaussianBlur stdDeviation="3"/>
+      <feOffset dx="2" dy="2" result="offset"/>
+      <feComposite in="SourceGraphic" in2="offset" operator="out"/>
+    </filter>
+    
+    <!-- Gradiente para el área de datos -->
+    <radialGradient id="dataGrad" cx="50%" cy="30%">
+      <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:0.9" />
+      <stop offset="70%" style="stop-color:#D32F2F;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#B71C1C;stop-opacity:0.6" />
+    </radialGradient>
+    
+    <pattern id="techGrid" width="15" height="15" patternUnits="userSpaceOnUse">
+      <path d="M 15 0 L 0 0 0 15" fill="none" stroke="#4FC3F7" stroke-width="0.3" opacity="0.4"/>
+      <circle cx="0" cy="0" r="0.5" fill="#4FC3F7" opacity="0.6"/>
+    </pattern>
+  </defs>
+  
+  <rect width="700" height="700" fill="url(#bgGrad)"/>
+  <rect width="700" height="700" fill="url(#techGrid)"/>
+  <polygon points="350.0,306.0 391.8,336.4 375.9,385.6 324.1,385.6 308.2,336.4" 
+           fill="none" stroke="#64B5F6" stroke-width="1.5" 
+           opacity="0.6" filter="url(#softGlow)"/>
+  <polygon points="350.0,262.0 433.7,322.8 401.7,421.2 298.3,421.2 266.3,322.8" 
+           fill="none" stroke="#64B5F6" stroke-width="1.5" 
+           opacity="0.6" filter="url(#softGlow)"/>
+  <polygon points="350.0,218.0 475.5,309.2 427.6,456.8 272.4,456.8 224.5,309.2" 
+           fill="none" stroke="#64B5F6" stroke-width="1.5" 
+           opacity="0.6" filter="url(#softGlow)"/>
+  <polygon points="350.0,174.0 517.4,295.6 453.5,492.4 246.5,492.4 182.6,295.6" 
+           fill="none" stroke="#64B5F6" stroke-width="1.5" 
+           opacity="0.6" filter="url(#softGlow)"/>
+  <polygon points="350.0,130.0 559.2,282.0 479.3,528.0 220.7,528.0 140.8,282.0" 
+           fill="none" stroke="#64B5F6" stroke-width="1.5" 
+           opacity="0.8" filter="url(#softGlow)"/>
+  <polygon points="350.0,249.7 436.0,322.1 421.9,449.0 304.0,413.4 189.5,297.9 350.0,249.7" 
+           fill="url(#dataGrad)" 
+           stroke="#F44336" stroke-width="3" 
+           filter="url(#redAreaBlur)"/>
+  <line x1="350" y1="350" x2="350.0" y2="130.0" 
+        stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"
+        filter="url(#strongGlow)"/>
+  <line x1="350" y1="350" x2="559.2324335849338" y2="282.01626123751157" 
+        stroke="#E1F5FE" stroke-width="3" stroke-linecap="round"
+        filter="url(#strongGlow)"/>
+  <line x1="350" y1="350" x2="479.31275550434407" y2="527.9837387624884" 
+        stroke="#E1F5FE" stroke-width="3" stroke-linecap="round"
+        filter="url(#strongGlow)"/>
+  <line x1="350" y1="350" x2="220.68724449565593" y2="527.9837387624884" 
+        stroke="#E1F5FE" stroke-width="3" stroke-linecap="round"
+        filter="url(#strongGlow)"/>
+  <line x1="350" y1="350" x2="140.7675664150662" y2="282.01626123751157" 
+        stroke="#E1F5FE" stroke-width="3" stroke-linecap="round"
+        filter="url(#strongGlow)"/>
+  <circle cx="350.0" cy="249.68" r="6" 
+          fill="url(#dataGrad)" stroke="#FFFFFF" stroke-width="2" 
+          filter="url(#strongGlow)">
+    <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite" 
+             begin="0.0s"/>
+  </circle>
+  <!-- Círculo interior brillante -->
+  <circle cx="350.0" cy="249.68" r="3" 
+          fill="#FFFFFF" opacity="0.8"/>
+  <circle cx="435.99453020340775" cy="322.05868336861727" r="6" 
+          fill="url(#dataGrad)" stroke="#FFFFFF" stroke-width="2" 
+          filter="url(#strongGlow)">
+    <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite" 
+             begin="0.4s"/>
+  </circle>
+  <!-- Círculo interior brillante -->
+  <circle cx="435.99453020340775" cy="322.05868336861727" r="3" 
+          fill="#FFFFFF" opacity="0.8"/>
+  <circle cx="421.8978920604153" cy="448.95895875194356" r="6" 
+          fill="url(#dataGrad)" stroke="#FFFFFF" stroke-width="2" 
+          filter="url(#strongGlow)">
+    <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite" 
+             begin="0.8s"/>
+  </circle>
+  <!-- Círculo interior brillante -->
+  <circle cx="421.8978920604153" cy="448.95895875194356" r="3" 
+          fill="#FFFFFF" opacity="0.8"/>
+  <circle cx="303.9646590404535" cy="413.3622109994459" r="6" 
+          fill="url(#dataGrad)" stroke="#FFFFFF" stroke-width="2" 
+          filter="url(#strongGlow)">
+    <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite" 
+             begin="1.2000000000000002s"/>
+  </circle>
+  <!-- Círculo interior brillante -->
+  <circle cx="303.9646590404535" cy="413.3622109994459" r="3" 
+          fill="#FFFFFF" opacity="0.8"/>
+  <circle cx="189.51872344035576" cy="297.8564723691714" r="6" 
+          fill="url(#dataGrad)" stroke="#FFFFFF" stroke-width="2" 
+          filter="url(#strongGlow)">
+    <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite" 
+             begin="1.6s"/>
+  </circle>
+  <!-- Círculo interior brillante -->
+  <circle cx="189.51872344035576" cy="297.8564723691714" r="3" 
+          fill="#FFFFFF" opacity="0.8"/>
+  <text x="350.0" y="86.0" 
+        fill="#FFFFFF" font-family="Arial Black, Arial" font-size="16" font-weight="bold" 
+        text-anchor="middle" filter="url(#softGlow)">MATHEMATICS</text>
+  <text x="350.0" y="106.0" 
+        fill="#4FC3F7" font-family="Arial" font-size="12" font-weight="bold" 
+        text-anchor="middle">(4.56)</text>
+  <text x="606.7852593996914" y="272.5654115187642" 
+        fill="#FFFFFF" font-family="Arial Black, Arial" font-size="16" font-weight="bold" 
+        text-anchor="middle" filter="url(#softGlow)">PROGRAMMING</text>
+  <text x="606.7852593996914" y="292.5654115187642" 
+        fill="#4FC3F7" font-family="Arial" font-size="12" font-weight="bold" 
+        text-anchor="middle">(4.11)</text>
+  <text x="508.70201811896777" y="574.4345884812358" 
+        fill="#FFFFFF" font-family="Arial Black, Arial" font-size="16" font-weight="bold" 
+        text-anchor="middle" filter="url(#softGlow)">TEAMWORK</text>
+  <text x="508.70201811896777" y="594.4345884812358" 
+        fill="#4FC3F7" font-family="Arial" font-size="12" font-weight="bold" 
+        text-anchor="middle">(5.56)</text>
+  <text x="191.29798188103229" y="574.4345884812358" 
+        fill="#FFFFFF" font-family="Arial Black, Arial" font-size="16" font-weight="bold" 
+        text-anchor="middle" filter="url(#softGlow)">DISCIPLINE</text>
+  <text x="191.29798188103229" y="594.4345884812358" 
+        fill="#4FC3F7" font-family="Arial" font-size="12" font-weight="bold" 
+        text-anchor="middle">(3.56)</text>
+  <text x="93.21474060030852" y="272.5654115187642" 
+        fill="#FFFFFF" font-family="Arial Black, Arial" font-size="16" font-weight="bold" 
+        text-anchor="middle" filter="url(#softGlow)">SOCIABILITY</text>
+  <text x="93.21474060030852" y="292.5654115187642" 
+        fill="#4FC3F7" font-family="Arial" font-size="12" font-weight="bold" 
+        text-anchor="middle">(7.67)</text>
+  <text x="350" y="40" 
+        fill="#FFFFFF" font-family="Arial Black, Arial" font-size="24" font-weight="bold" 
+        text-anchor="middle" filter="url(#strongGlow)">CHAY</text>
+  <text x="350" y="65" 
+        fill="#4FC3F7" font-family="Arial" font-size="14" font-weight="bold" 
+        text-anchor="middle">SKILLS RADAR</text>
+  <circle cx="350" cy="350" r="8" 
+          fill="#4FC3F7" stroke="#FFFFFF" stroke-width="3" 
+          filter="url(#strongGlow)">
+    <animate attributeName="fill-opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="350" cy="350" r="4" 
+          fill="#FFFFFF" opacity="0.9"/>
+</svg>
